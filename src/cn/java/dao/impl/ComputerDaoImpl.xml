@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mapper是局部配置文件中的跟标签，类似于html中的html标签 namespace：代表唯一标识符，其值与某一个dao层类的路径保持一致 -->
+<mapper namespace="cn.java.dao.impl.ComputerDaoImpl">
+	<!-- 不带条件查询 -->
+	<select id="selectAll" resultType="Map">
+		SELECT * FROM `computers`;
+	</select>
+
+	<!-- 通过条件查询   -->
+	<select id="selectByConditions1" parameterType="Map"
+		resultType="Map">
+		SELECT * from computers WHERE brand=#{brand} AND price &lt;= #{price};
+	</select>
+	
+		<!-- 通过条件查询   -->
+	<select id="selectByConditions2" parameterType="Map"
+		resultType="Map">
+		SELECT * from computers WHERE brand=#{brand} AND price &gt;#{price};
+	</select>
+
+</mapper>
